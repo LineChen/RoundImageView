@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--&lt;!&ndash;圆角图片&ndash;&gt;-->
+    <declare-styleable name="RoundImageView">
+        <attr name="edgeWidth" format="reference|dimension" />
+        <attr name="edgeRadius" format="reference|dimension" />
+        <attr name="edgeColor" format="reference|color" />
+        <attr name="hoverColor" format="reference|color" />
+    </declare-styleable>
+
+
+
+
+</resources>
