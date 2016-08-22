@@ -18,7 +18,7 @@
 
 #### 使用
 
- - #####  布局
+ #####  布局
 
 ```java
 <com.beiing.roundimage.CircleImageView
@@ -49,7 +49,7 @@
 ```
 
 
-- ##### 测试常见的图片加载库加载
+##### 测试常见的图片加载库加载
 
 - Glide
 
@@ -79,7 +79,7 @@ x.image().bind(roundImageViewXutils, "http://img0.imgtn.bdimg.com/it/u=226341818
 
 #### 效果图
 
-![screenshot](http://)
+![screenshot](https://github.com/LineChen/RoundImageView/blob/master/screenshot/screenshot.png)
 
 
 
