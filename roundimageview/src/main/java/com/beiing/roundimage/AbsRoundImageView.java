@@ -1,6 +1,7 @@
 package com.beiing.roundimage;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,6 +16,9 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.beiing.roundimageview.R;
+
 
 /**
  * Created by chenliu on 2016/8/19.<br/>
@@ -32,7 +36,7 @@ public abstract class AbsRoundImageView extends ImageView {
 
     protected float borderWidth;
 
-    protected int borderColor = Color.DKGRAY;
+    protected int borderColor;
 
     private Paint borderPaint;
 
@@ -46,8 +50,17 @@ public abstract class AbsRoundImageView extends ImageView {
 
     public AbsRoundImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
+        initAttrs(attrs);
         init();
+    }
+
+    protected void initAttrs(AttributeSet attrs){
+        if (attrs != null) {
+            TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.AbsRoundImageView);
+            borderWidth = ta.getDimension(R.styleable.AbsRoundImageView_borderWidth, 0);
+            borderColor = ta.getColor(R.styleable.AbsRoundImageView_borderColor, 0);
+            ta.recycle();
+        }
     }
 
     private void init() {
@@ -58,8 +71,7 @@ public abstract class AbsRoundImageView extends ImageView {
         borderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         borderPaint.setStrokeWidth(borderWidth);
 
-        borderWidth = dp2px(1f);
-        super.setScaleType(ScaleType.CENTER_CROP);
+        setScaleType(ScaleType.CENTER_CROP);
     }
 
     @Override
@@ -115,7 +127,6 @@ public abstract class AbsRoundImageView extends ImageView {
             super.onDraw(canvas);
         }
     }
-
 
     public float dp2px(float dpValue){
         float density = getContext().getResources().getDisplayMetrics().density;

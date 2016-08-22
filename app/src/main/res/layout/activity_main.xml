@@ -21,6 +21,75 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:src="@mipmap/head"
+        app:borderWidth="2dp"
+        app:borderColor="#8c9eff"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.beiing.roundimage.RoundImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/test"
+                app:borderWidth="2dp"
+                app:borderColor="#8c9eff"
+                app:rightTopRadius="30dp"
+                app:leftBottomRadius="30dp"
+                />
+
+            <com.beiing.roundimage.RoundImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/test"
+                app:borderWidth="2dp"
+                app:borderColor="#8c9eff"
+                app:leftTopRadius="30dp"
+                app:rightBottomRadius="30dp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <com.beiing.roundimage.RoundImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/test"
+                app:borderWidth="2dp"
+                app:borderColor="#8c9eff"
+                app:leftTopRadius="30dp"
+                app:rightBottomRadius="30dp"
+                />
+
+            <com.beiing.roundimage.RoundImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/test"
+                app:borderWidth="2dp"
+                app:borderColor="#8c9eff"
+                app:rightTopRadius="30dp"
+                app:leftBottomRadius="30dp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
     
 </LinearLayout>
