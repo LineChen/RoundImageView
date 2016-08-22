@@ -18,6 +18,8 @@
 
 #### 使用
 
+ - #####  布局
+
 ```java
 <com.beiing.roundimage.CircleImageView
         android:layout_width="wrap_content"
@@ -29,7 +31,6 @@
         />
 
 ```
-
 
 ```java
  <com.beiing.roundimage.RoundImageView
@@ -46,6 +47,37 @@
                 />
 
 ```
+
+
+- ##### 测试常见的图片加载库加载
+
+- Glide
+
+```java
+ circleImageViewGlide = (CircleImageView) findViewById(R.id.circle_image_glide);
+ Glide.with(this).load("http://img2.imgtn.bdimg.com/it/u=1939271907,257307689&fm=21&gp=0.jpg").into(circleImageViewGlide);
+
+```
+
+- Picasso
+
+```java
+roundImageViewPicasso = (RoundImageView) findViewById(R.id.round_image_picasso);
+ Picasso.with(this).load("http://img0.imgtn.bdimg.com/it/u=2263418180,3668836868&fm=206&gp=0.jpg").fit().into(roundImageViewPicasso);
+
+```
+
+- xUtils3
+
+```java
+roundImageViewXutils = (RoundImageView) findViewById(R.id.round_image_xutils);
+x.image().bind(roundImageViewXutils, "http://img0.imgtn.bdimg.com/it/u=2263418180,3668836868&fm=206&gp=0.jpg",
+                new ImageOptions.Builder().setCrop(true).build());
+
+```
+
+
+#### 效果图
 
 ![screenshot](http://)
 

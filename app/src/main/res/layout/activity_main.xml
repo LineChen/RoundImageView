@@ -11,15 +11,10 @@
     android:orientation="vertical"
     tools:context="com.beiing.roundimage.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
     <com.beiing.roundimage.CircleImageView
-        android:id="@+id/circle_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/circle_image_glide"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/head"
         app:borderWidth="2dp"
@@ -37,10 +32,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <com.beiing.roundimage.RoundImageView
-                android:id="@+id/round_image"
+                android:id="@+id/round_image_xutils"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:scaleType="centerCrop"
                 android:src="@mipmap/test"
                 app:borderWidth="2dp"
                 app:borderColor="#8c9eff"
@@ -49,6 +43,7 @@
                 />
 
             <com.beiing.roundimage.RoundImageView
+                android:id="@+id/round_image_picasso"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
@@ -71,7 +66,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/test"
+                android:src="@mipmap/head"
                 app:borderWidth="2dp"
                 app:borderColor="#8c9eff"
                 app:leftTopRadius="30dp"
@@ -83,7 +78,7 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/test"
+                android:src="@mipmap/head"
                 app:borderWidth="2dp"
                 app:borderColor="#8c9eff"
                 app:rightTopRadius="30dp"
