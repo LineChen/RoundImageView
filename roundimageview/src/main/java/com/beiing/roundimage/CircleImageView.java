@@ -27,7 +27,12 @@ public class CircleImageView extends AbsRoundImageView {
         super.initAttrs(attrs);
     }
 
-
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int width = Math.max(getMeasuredWidth(), getMeasuredHeight());
+        setMeasuredDimension(width, width);
+    }
 
     @Override
     protected void initRoundPath() {

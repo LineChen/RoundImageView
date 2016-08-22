@@ -17,8 +17,9 @@
         android:text="Hello World!" />
 
     <com.beiing.roundimage.CircleImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/circle_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/head"
         app:borderWidth="2dp"
@@ -36,6 +37,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <com.beiing.roundimage.RoundImageView
+                android:id="@+id/round_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"

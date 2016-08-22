@@ -48,8 +48,6 @@ public class RoundImageView extends AbsRoundImageView {
             leftBottomRadius = ta.getDimension(R.styleable.RoundImageView_leftBottomRadius, 0);
             ta.recycle();
         }
-
-        Log.e("===", "borderW=" + borderWidth + ", borderC=" + borderColor);
     }
 
     @Override
