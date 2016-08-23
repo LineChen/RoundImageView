@@ -1,6 +1,6 @@
 # RoundImageView
 
-自定义圆角ImageView和圆形ImageView。
+圆形图片和可控位置圆角图片
 
 **圆形图片**
 

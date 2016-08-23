@@ -54,17 +54,6 @@ public class RoundImageView extends AbsRoundImageView {
     }
 
     @Override
-    protected Bitmap getRoundBitmap() {
-        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(),
-                Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.WHITE);
-        canvas.drawPath(roundPath, paint);
-        return bitmap;
-    }
-
-    @Override
     protected void initRoundPath() {
         roundPath.reset();
         final int width = getWidth();

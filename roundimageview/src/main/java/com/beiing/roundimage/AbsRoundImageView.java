@@ -29,16 +29,27 @@ import com.beiing.roundimageview.R;
 public abstract class AbsRoundImageView extends ImageView {
 
     private static final PorterDuffXfermode xFermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
-    private RectF rect;
 
     private Paint mBitmapPaint;
 
+    /**
+     * 图片可视区
+     */
     protected Path roundPath;
 
+    /**
+     * 图片边框
+     */
     protected Path borderPath;
 
+    /**
+     * 边框宽度
+     */
     protected float borderWidth;
 
+    /**
+     * 边框颜色
+     */
     protected int borderColor;
 
     private Paint borderPaint;
@@ -69,7 +80,6 @@ public abstract class AbsRoundImageView extends ImageView {
     private void init() {
         mBitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        rect = new RectF();
         roundPath = new Path();
         borderPath = new Path();
 
@@ -88,11 +98,6 @@ public abstract class AbsRoundImageView extends ImageView {
         }
     }
 
-    /**
-     * 获取图片区域纯颜色Bitmap
-     * @return
-     */
-    protected abstract Bitmap getRoundBitmap();
 
     /**
      * 初始化边框Path
@@ -103,6 +108,21 @@ public abstract class AbsRoundImageView extends ImageView {
      * 初始化图片区域Path
      */
     protected abstract void initRoundPath();
+
+
+    /**
+     * 获取图片区域纯颜色Bitmap
+     * @return
+     */
+    protected Bitmap getRoundBitmap() {
+        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(),
+                Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.WHITE);
+        canvas.drawPath(roundPath, paint);
+        return bitmap;
+    }
 
     private void drawBorder(Canvas canvas) {
         borderPaint.setStyle(Paint.Style.STROKE);
@@ -134,10 +154,8 @@ public abstract class AbsRoundImageView extends ImageView {
                 mBitmapPaint.reset();
                 mBitmapPaint.setFilterBitmap(false);
                 mBitmapPaint.setXfermode(xFermode);
-                //绘制形状
                 drawCanvas.drawBitmap(roundBm, 0, 0, mBitmapPaint);
                 mBitmapPaint.setXfermode(null);
-                //绘制图片
                 canvas.drawBitmap(bitmap, 0, 0, mBitmapPaint);
             } catch (Exception e) {
                 e.printStackTrace();
