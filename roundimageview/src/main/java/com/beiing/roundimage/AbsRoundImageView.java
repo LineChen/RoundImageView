@@ -68,8 +68,6 @@ public abstract class AbsRoundImageView extends ImageView {
 
     private void init() {
         mBitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mBitmapPaint.setStyle(Paint.Style.FILL);
-        mBitmapPaint.setColor(borderColor);
 
         rect = new RectF();
         roundPath = new Path();
@@ -85,14 +83,26 @@ public abstract class AbsRoundImageView extends ImageView {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         if(changed){
-            initRoundPath();
             initBorderPath();
+            initRoundPath();
         }
     }
 
-    protected abstract void initRoundPath();
+    /**
+     * 获取图片区域纯颜色Bitmap
+     * @return
+     */
+    protected abstract Bitmap getRoundBitmap();
 
+    /**
+     * 初始化边框Path
+     */
     protected abstract void initBorderPath();
+
+    /**
+     * 初始化图片区域Path
+     */
+    protected abstract void initRoundPath();
 
     private void drawBorder(Canvas canvas) {
         borderPaint.setStyle(Paint.Style.STROKE);
@@ -102,24 +112,23 @@ public abstract class AbsRoundImageView extends ImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        Drawable mDrawable = getDrawable();
-        if(!isInEditMode() && mDrawable != null){
-//            Bitmap bitmap = getBitmapFromDrawable(mDrawable);
-            //拿到Drawable
-            Drawable drawable = getDrawable();
-            //获取drawable的宽和高
-            int dWidth = drawable.getIntrinsicWidth();
-            int dHeight = drawable.getIntrinsicHeight();
-            Bitmap bitmap;
-            if (drawable != null) {
-                //创建bitmap
-                bitmap = Bitmap.createBitmap(getWidth(), getHeight(),
-                        Bitmap.Config.ARGB_8888);
-                float scale = 1.0f;
-                //创建画布
-                Canvas drawCanvas = new Canvas(bitmap);
-                drawable.draw(drawCanvas);
+        drawImage(canvas);
+        drawBorder(canvas);
+    }
 
+    private void drawImage(Canvas canvas) {
+        Drawable drawable = getDrawable();
+        if(!isInEditMode() && drawable != null) {
+            try {
+                Bitmap bitmap;
+                if (drawable instanceof ColorDrawable) {
+                    bitmap = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888);
+                } else {
+                    bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+                }
+                Canvas drawCanvas = new Canvas(bitmap);
+                drawable.setBounds(0, 0, drawCanvas.getWidth(), drawCanvas.getHeight());
+                drawable.draw(drawCanvas);
 
                 Bitmap roundBm = getRoundBitmap();
                 mBitmapPaint.reset();
@@ -128,116 +137,12 @@ public abstract class AbsRoundImageView extends ImageView {
                 //绘制形状
                 drawCanvas.drawBitmap(roundBm, 0, 0, mBitmapPaint);
                 mBitmapPaint.setXfermode(null);
-                //将准备好的bitmap绘制出来
+                //绘制图片
                 canvas.drawBitmap(bitmap, 0, 0, mBitmapPaint);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-
-
-//            //1.绘制形状
-//            canvas.drawARGB(0, 0, 0, 0);
-//            final int color = 0xffffffff;
-//            mBitmapPaint.setColor(color);
-//            canvas.drawPath(roundPath, mBitmapPaint);
-//
-//            mBitmapPaint.reset();
-//            mBitmapPaint.setFilterBitmap(false);
-//            mBitmapPaint.setXfermode(xFermode);
-//
-//            //2.绘制图片
-////            canvas.drawBitmap(bitmap, 0, 0,  mBitmapPaint);
-//
-//            mBitmapPaint.setXfermode(null);
-
-
-            drawBorder(canvas);
         }
-
-
-
-
-
-//        if (!isInEditMode() && mDrawable instanceof BitmapDrawable) {
-//            Paint paint = ((BitmapDrawable) mDrawable).getPaint();
-//            Rect bitmapBounds = mDrawable.getBounds();
-//            rect.set(bitmapBounds);
-//            int saveCount = canvas.saveLayer(rect, null,
-//                    Canvas.MATRIX_SAVE_FLAG |
-//                            Canvas.CLIP_SAVE_FLAG |
-//                            Canvas.HAS_ALPHA_LAYER_SAVE_FLAG |
-//                            Canvas.FULL_COLOR_LAYER_SAVE_FLAG |
-//                            Canvas.CLIP_TO_LAYER_SAVE_FLAG);
-//            getImageMatrix().mapRect(rect);
-//
-//            //src-in : 显示重叠部分上层  ->先绘制形状，再绘制图片
-//            paint.setAntiAlias(true);
-//            canvas.drawARGB(0, 0, 0, 0);
-//            final int color = 0xffffffff;
-//            paint.setColor(color);
-//            //1.绘制形状
-//            canvas.drawPath(roundPath, paint);
-//            Xfermode oldMode = paint.getXfermode();
-//            paint.setXfermode(xFermode);
-//            //2.绘制图片
-//            super.onDraw(canvas);
-//            paint.setXfermode(oldMode);
-//            canvas.restoreToCount(saveCount);
-//
-//            //绘制边框
-//            drawBorder(canvas);
-//        }
-
-
-    }
-
-
-    private Bitmap getBitmapFromDrawable(Drawable drawable) {
-        if (drawable == null) {
-            return null;
-        }
-
-        if (drawable instanceof BitmapDrawable) {
-            return ((BitmapDrawable) drawable).getBitmap();
-        }
-
-        try {
-            Bitmap bitmap;
-            if (drawable instanceof ColorDrawable) {
-                bitmap = Bitmap.createBitmap(2, 2, Bitmap.Config.ARGB_8888);
-            } else {
-                bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-            }
-            Canvas canvas = new Canvas(bitmap);
-            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
-            drawable.draw(canvas);
-            return bitmap;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
-     * 绘制形状
-     * @return
-     */
-    public Bitmap getRoundBitmap()
-    {
-        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(),
-                Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.BLACK);
-
-        canvas.drawCircle(getWidth() / 2, getWidth() / 2, getWidth() / 2,
-                    paint);
-
-        return bitmap;
-    }
-
-    public float dp2px(float dpValue){
-        float density = getContext().getResources().getDisplayMetrics().density;
-        return dpValue * density;
     }
 
 }

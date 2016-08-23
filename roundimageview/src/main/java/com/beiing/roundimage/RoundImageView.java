@@ -2,6 +2,10 @@ package com.beiing.roundimage;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
@@ -34,7 +38,6 @@ public class RoundImageView extends AbsRoundImageView {
 
     public RoundImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
         initAttrs(attrs);
     }
 
@@ -48,6 +51,17 @@ public class RoundImageView extends AbsRoundImageView {
             leftBottomRadius = ta.getDimension(R.styleable.RoundImageView_leftBottomRadius, 0);
             ta.recycle();
         }
+    }
+
+    @Override
+    protected Bitmap getRoundBitmap() {
+        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(),
+                Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.WHITE);
+        canvas.drawPath(roundPath, paint);
+        return bitmap;
     }
 
     @Override
