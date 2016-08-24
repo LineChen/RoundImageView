@@ -16,7 +16,55 @@
  - rightBottomRadius	右下角圆角半径
  - leftBottomRadius		左下角圆角半径
 
-#### 使用
+## 使用
+
+### gradle
+Step 1. 添加JitPack到根配置文件
+
+```java
+allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+
+Step 2. 添加依赖
+
+```java
+dependencies {
+	        compile 'com.github.LineChen:RoundImageView:v1.0.0'
+	}
+```
+
+
+### maven
+Step 1. 添加JitPack到配置文件
+
+```java
+<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+
+
+
+Step 2. 添加依赖
+
+```java
+<dependency>
+	    <groupId>com.github.LineChen</groupId>
+	    <artifactId>RoundImageView</artifactId>
+	    <version>v1.0.0</version>
+	</dependency>
+```
+
+
 
 ##### 布局
 
