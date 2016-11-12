@@ -1,6 +1,6 @@
 # RoundImageView
 
-自定义圆角ImageView和圆形ImageView。
+圆形图片和可控位置圆角图片
 
 **圆形图片**
 
@@ -16,7 +16,55 @@
  - rightBottomRadius	右下角圆角半径
  - leftBottomRadius		左下角圆角半径
 
-#### 使用
+## 使用
+
+### gradle
+Step 1. 添加JitPack到根配置文件
+
+```java
+allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+
+Step 2. 添加依赖
+
+```java
+dependencies {
+	        compile 'com.github.LineChen:RoundImageView:v1.0.0'
+	}
+```
+
+
+### maven
+Step 1. 添加JitPack到配置文件
+
+```java
+<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+
+
+
+Step 2. 添加依赖
+
+```java
+<dependency>
+	    <groupId>com.github.LineChen</groupId>
+	    <artifactId>RoundImageView</artifactId>
+	    <version>v1.0.0</version>
+	</dependency>
+```
+
+
 
 ##### 布局
 
@@ -83,7 +131,23 @@ x.image().bind(roundImageViewXutils, "http://img0.imgtn.bdimg.com/it/u=226341818
 
 
 
+#License
 
+```
+   Copyright (C) 2016 LineChen <15764230067@163.com>
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+```
 
 
 
