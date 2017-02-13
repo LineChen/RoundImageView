@@ -17,8 +17,8 @@
         android:layout_height="100dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/head"
-        app:borderWidth="2dp"
-        app:borderColor="#8c9eff"
+        app:riv_borderWidth="2dp"
+        app:riv_borderColor="#8c9eff"
         />
 
     <LinearLayout
@@ -36,10 +36,10 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@mipmap/test"
-                app:borderWidth="2dp"
-                app:borderColor="#8c9eff"
-                app:rightTopRadius="30dp"
-                app:leftBottomRadius="30dp"
+                app:riv_borderWidth="2dp"
+                app:riv_borderColor="#8c9eff"
+                app:riv_rightTopRadius="30dp"
+                app:riv_leftBottomRadius="30dp"
                 />
 
             <com.beiing.roundimage.RoundImageView
@@ -49,10 +49,10 @@
                 android:layout_marginLeft="10dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/test"
-                app:borderWidth="2dp"
-                app:borderColor="#8c9eff"
-                app:leftTopRadius="30dp"
-                app:rightBottomRadius="30dp"
+                app:riv_borderWidth="2dp"
+                app:riv_borderColor="#8c9eff"
+                app:riv_leftTopRadius="30dp"
+                app:riv_rightBottomRadius="30dp"
                 />
         </LinearLayout>
 
@@ -67,10 +67,10 @@
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/head"
-                app:borderWidth="2dp"
-                app:borderColor="#8c9eff"
-                app:leftTopRadius="30dp"
-                app:rightBottomRadius="30dp"
+                app:riv_borderWidth="2dp"
+                app:riv_borderColor="#8c9eff"
+                app:riv_leftTopRadius="30dp"
+                app:riv_rightBottomRadius="30dp"
                 />
 
             <com.beiing.roundimage.RoundImageView
@@ -79,10 +79,10 @@
                 android:layout_marginLeft="10dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/head"
-                app:borderWidth="2dp"
-                app:borderColor="#8c9eff"
-                app:rightTopRadius="30dp"
-                app:leftBottomRadius="30dp"
+                app:riv_borderWidth="2dp"
+                app:riv_borderColor="#8c9eff"
+                app:riv_rightTopRadius="30dp"
+                app:riv_leftBottomRadius="30dp"
                 />
         </LinearLayout>
 

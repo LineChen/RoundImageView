@@ -71,8 +71,8 @@ public abstract class AbsRoundImageView extends ImageView {
     protected void initAttrs(AttributeSet attrs){
         if (attrs != null) {
             TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.AbsRoundImageView);
-            borderWidth = ta.getDimension(R.styleable.AbsRoundImageView_borderWidth, 0);
-            borderColor = ta.getColor(R.styleable.AbsRoundImageView_borderColor, 0);
+            borderWidth = ta.getDimension(R.styleable.AbsRoundImageView_riv_borderWidth, 0);
+            borderColor = ta.getColor(R.styleable.AbsRoundImageView_riv_borderColor, 0);
             ta.recycle();
         }
     }

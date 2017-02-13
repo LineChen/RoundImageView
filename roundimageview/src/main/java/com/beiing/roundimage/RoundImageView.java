@@ -45,10 +45,10 @@ public class RoundImageView extends AbsRoundImageView {
         super.initAttrs(attrs);
         if (attrs != null) {
             TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.RoundImageView);
-            leftTopRadius = ta.getDimension(R.styleable.RoundImageView_leftTopRadius, 0);
-            rightTopRadius = ta.getDimension(R.styleable.RoundImageView_rightTopRadius, 0);
-            rightBottomRadius = ta.getDimension(R.styleable.RoundImageView_rightBottomRadius, 0);
-            leftBottomRadius = ta.getDimension(R.styleable.RoundImageView_leftBottomRadius, 0);
+            leftTopRadius = ta.getDimension(R.styleable.RoundImageView_riv_leftTopRadius, 0);
+            rightTopRadius = ta.getDimension(R.styleable.RoundImageView_riv_rightTopRadius, 0);
+            rightBottomRadius = ta.getDimension(R.styleable.RoundImageView_riv_rightBottomRadius, 0);
+            leftBottomRadius = ta.getDimension(R.styleable.RoundImageView_riv_leftBottomRadius, 0);
             ta.recycle();
         }
     }

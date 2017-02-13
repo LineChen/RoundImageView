@@ -27,7 +27,6 @@ public class CircleImageView extends AbsRoundImageView {
 
     public CircleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        super.initAttrs(attrs);
     }
 
     @Override
