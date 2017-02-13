@@ -40,32 +40,6 @@ dependencies {
 ```
 
 
-### maven
-Step 1. 添加JitPack到配置文件
-
-```java
-<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-```
-
-
-
-Step 2. 添加依赖
-
-```java
-<dependency>
-	    <groupId>com.github.LineChen</groupId>
-	    <artifactId>RoundImageView</artifactId>
-	    <version>v1.0.0</version>
-	</dependency>
-```
-
-
-
 ##### 布局
 
 ```java
